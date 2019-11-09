@@ -7,7 +7,7 @@ import (
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 	"github.com/spf13/viper"
 
-	"my-gin/log"
+	"myGin/log"
 )
 
 var Mysql *gorm.DB

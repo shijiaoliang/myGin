@@ -1,7 +1,7 @@
 /**
  *******************************************slade********************************************
  * Copyright (c)  slade
- * Created by my-gin.
+ * Created by myGin.
  * User: 605724193@qq.com
  * Date: 2019/08/07
  * Time: 11:18
@@ -15,12 +15,12 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"my-gin/log"
-	"my-gin/util"
-	"my-gin/config"
-	"my-gin/db"
-	"my-gin/middleware"
-	"my-gin/router"
+	"myGin/log"
+	"myGin/util"
+	"myGin/config"
+	"myGin/db"
+	"myGin/middleware"
+	"myGin/router"
 )
 
 func main() {

@@ -1,2 +1,2 @@
-# my-gin
-my-gin
+# myGin
+myGin
