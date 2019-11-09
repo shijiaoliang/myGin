@@ -11,27 +11,12 @@
 package user
 
 import (
-	"github.com/jinzhu/gorm"
-
 	"myGin/service"
 )
 
 type User struct {
-	UserId int64  `json:"user_id" gorm:"primary_key"`
-	Name   string `json:"name" binding:"required"`
-	Phone  string `json:"phone"`
-
 	service.BaseModel
-}
 
-func (*User) BeforeCreate(scope *gorm.Scope) (err error) {
-	_ = service.BeforeCreate(scope)
-
-	return
-}
-
-func (*User) BeforeUpdate(scope *gorm.Scope) (err error) {
-	_ = service.BeforeUpdate(scope)
-
-	return
+	Name   string `json:"name" binding:"required"`
+	Age    int `json:"age"`
 }

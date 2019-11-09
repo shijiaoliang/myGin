@@ -14,6 +14,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/pingcap/errors"
 
+	"myGin/db"
 	"myGin/service"
 	"myGin/service/user"
 	"myGin/util"
@@ -22,15 +23,18 @@ import (
 func InitUserRouter(r *gin.Engine) {
 	userRouter := r.Group("/user")
 
-	//[/user/index]
-	userRouter.POST("index", func(c *gin.Context) {
+	//[/user/add]
+	userRouter.Any("add", func(c *gin.Context) {
 		var u user.User
+
 		if err := c.ShouldBindJSON(&u); err != nil {
 			err = errors.WithStack(service.ErrParamError)
 			util.CheckErr(err, c)
 
 			return
 		}
+
+		db.Mysql.Create(&u)
 
 		util.ResSuccess(c, u, "")
 	})

@@ -10,17 +10,17 @@
 
 package service
 
+import "time"
+
 type BaseDto struct {
-	CreateUser string `json:"create_user"`
+	CreatedAt time.Time `json:"created_at"`
+	UpdatedAt time.Time `json:"updated_at"`
 
-	CreateAt int `json:"create_at"`
-	UpdateAt int `json:"update_at"`
+	StartCreatedAt time.Time `json:"start_created_at"`
+	EndCreatedAt   time.Time `json:"end_created_at"`
 
-	StartCreateAt int `json:"start_create_at"`
-	EndCreateAt   int `json:"end_create_at"`
-
-	StartUpdateAt int `json:"start_update_at"`
-	EndUpdateAt   int `json:"end_update_at"`
+	StartUpdatedAt time.Time `json:"start_updated_at"`
+	EndUpdatedAt   time.Time `json:"end_updated_at"`
 
 	Page    int    `json:"page"`
 	PerPage int    `json:"per_page"`

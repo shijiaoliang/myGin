@@ -10,29 +10,10 @@
 
 package service
 
-import (
-	"time"
-
-	"github.com/jinzhu/gorm"
-)
+import "time"
 
 type BaseModel struct {
-	CreateUser string `json:"create_user"`
-	CreateAt   int    `json:"create_at"`
-	UpdateAt   int    `json:"update_at"`
-}
-
-func BeforeCreate(scope *gorm.Scope) (err error) {
-	nowTimeStamp := int(time.Now().Unix())
-	_ = scope.SetColumn("CreateAt", nowTimeStamp)
-	_ = scope.SetColumn("UpdateAt", nowTimeStamp)
-
-	return
-}
-
-func BeforeUpdate(scope *gorm.Scope) (err error) {
-	nowTimeStamp := int(time.Now().Unix())
-	_ = scope.SetColumn("UpdateAt", nowTimeStamp)
-
-	return
+	ID        uint64     `gorm:"primary_key" json:"id"`
+	CreatedAt time.Time  `json:"createdAt"`
+	UpdatedAt time.Time  `json:"updatedAt"`
 }
