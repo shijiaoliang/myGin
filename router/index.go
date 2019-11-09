@@ -21,6 +21,6 @@ func InitIndexRouter(r *gin.Engine) {
 
 	//[/index/index]
 	indexRouter.GET("index", func(c *gin.Context) {
-		util.ResSuccess(c, "hello kitty", "")
+		util.ResSuccess(c, "Hello Kitty ^_^", "")
 	})
 }

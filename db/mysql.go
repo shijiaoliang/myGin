@@ -14,7 +14,7 @@ import (
 var Mysql *gorm.DB
 
 func init() {
-	//e.g: root:123456@tcp(192.168.8.100:3306)/ceping?charset=utf8&parseTime=True&loc=Local
+	//e.g: root:123456@tcp(127.0.0.1:3306)/myGin?charset=utf8&parseTime=True&loc=Local
 	dsn := viper.GetString("mysql.user") + ":" + viper.GetString("mysql.password") + "@tcp(" +
 		viper.GetString("mysql.host") + ":" + viper.GetString("mysql.port") + ")/" +
 		viper.GetString("mysql.db") + "?charset=" +
