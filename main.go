@@ -15,12 +15,12 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"myGin/log"
-	"myGin/util"
 	"myGin/config"
 	"myGin/db"
+	"myGin/log"
 	"myGin/middleware"
 	"myGin/router"
+	"myGin/util"
 )
 
 func main() {
@@ -38,7 +38,7 @@ func main() {
 	//=====log=====
 	runtimeDirectory := "runtime"
 	if !util.FileExist(runtimeDirectory) {
-		util.CreateFile(runtimeDirectory)
+		_ = util.CreateFile(runtimeDirectory)
 	}
 	log.ConfigLogger(log.Logger, runtimeDirectory, "app.log", time.Hour*360, time.Hour)
 
@@ -50,5 +50,5 @@ func main() {
 	router.InitRouter(r)
 
 	//=====run=====
-	r.Run(config.AppConf.Address)
+	_ = r.Run(config.AppConf.Address)
 }

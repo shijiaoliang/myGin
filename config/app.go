@@ -44,7 +44,7 @@ func init() {
 		if err != nil {
 			panic(fmt.Errorf("Fatal error config file: %s \n", err))
 		}
-		viper.Unmarshal(&AppConf)
+		_ = viper.Unmarshal(&AppConf)
 	}
 
 	log.Logger.Info("config loaded")

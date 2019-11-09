@@ -25,13 +25,13 @@ type User struct {
 }
 
 func (*User) BeforeCreate(scope *gorm.Scope) (err error) {
-	service.BeforeCreate(scope)
+	_ = service.BeforeCreate(scope)
 
 	return
 }
 
 func (*User) BeforeUpdate(scope *gorm.Scope) (err error) {
-	service.BeforeUpdate(scope)
+	_ = service.BeforeUpdate(scope)
 
 	return
 }

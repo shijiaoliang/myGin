@@ -11,13 +11,13 @@
 package log
 
 import (
-	"time"
 	"path"
+	"time"
 
-	"github.com/pkg/errors"
-	"github.com/sirupsen/logrus"
-	"github.com/rifflock/lfshook"
 	"github.com/lestrrat/go-file-rotatelogs"
+	"github.com/pkg/errors"
+	"github.com/rifflock/lfshook"
+	"github.com/sirupsen/logrus"
 )
 
 var (

@@ -24,15 +24,15 @@ type BaseModel struct {
 
 func BeforeCreate(scope *gorm.Scope) (err error) {
 	nowTimeStamp := int(time.Now().Unix())
-	scope.SetColumn("CreateAt", nowTimeStamp)
-	scope.SetColumn("UpdateAt", nowTimeStamp)
+	_ = scope.SetColumn("CreateAt", nowTimeStamp)
+	_ = scope.SetColumn("UpdateAt", nowTimeStamp)
 
 	return
 }
 
 func BeforeUpdate(scope *gorm.Scope) (err error) {
 	nowTimeStamp := int(time.Now().Unix())
-	scope.SetColumn("UpdateAt", nowTimeStamp)
+	_ = scope.SetColumn("UpdateAt", nowTimeStamp)
 
 	return
 }
