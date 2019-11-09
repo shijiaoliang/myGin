@@ -17,6 +17,6 @@ import (
 type User struct {
 	service.BaseModel
 
-	Name   string `json:"name" binding:"required"`
-	Age    int `json:"age"`
+	Name string `json:"name" binding:"required"`
+	Age  int    `json:"age"`
 }

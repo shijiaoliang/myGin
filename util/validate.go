@@ -17,6 +17,6 @@ import (
 // 全局验证实例
 var Validate *validator.Validate
 
-func init()  {
+func init() {
 	Validate = validator.New()
 }

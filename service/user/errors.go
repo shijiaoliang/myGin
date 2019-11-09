@@ -17,5 +17,5 @@ import (
 )
 
 var (
-	ErrUserNotExist         = util.AppErrorNew(errors.New("user not exist"), util.ERROR)
+	ErrUserNotExist = util.AppErrorNew(errors.New("user not exist"), util.ERROR)
 )
