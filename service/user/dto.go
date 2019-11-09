@@ -14,10 +14,9 @@ import (
 	"myGin/service"
 )
 
-type User struct {
-	service.BaseModel
+type Dto struct {
+	service.BaseDto
 
-	//Name string `json:"name" binding:"required"`
 	Name string `json:"name"`
 	Age  int    `json:"age"`
 }
