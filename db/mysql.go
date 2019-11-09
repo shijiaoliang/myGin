@@ -2,6 +2,7 @@ package db
 
 import (
 	"fmt"
+	"time"
 
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
@@ -29,6 +30,9 @@ func init() {
 	//闲置的连接数 | 最大打开连接数, 默认值为0表示不限制
 	Mysql.DB().SetMaxIdleConns(viper.GetInt("mysql.max_idle_conns"))
 	Mysql.DB().SetMaxOpenConns(viper.GetInt("mysql.max_open_conns"))
+
+	//设置连接的最大可复用时间
+	Mysql.DB().SetConnMaxLifetime(time.Hour)
 
 	//全局禁用表名复数
 	Mysql.SingularTable(true)
