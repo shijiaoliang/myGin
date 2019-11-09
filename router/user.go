@@ -29,7 +29,7 @@ func InitUserRouter(r *gin.Engine) {
 
 		db.Mysql.Find(&users)
 
-		util.ResSuccess(c, users, "")
+		util.ResSuccessList(c, users, util.Pagination{}, "")
 	})
 
 	//[/user/add]

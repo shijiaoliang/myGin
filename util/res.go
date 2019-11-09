@@ -63,7 +63,7 @@ func ResSuccess(c *gin.Context, data interface{}, msg string) {
 func ResError(c *gin.Context, msg string, res int, data interface{}) {
 	c.JSON(http.StatusOK, &Res{
 		data,
-		res,
+		ERROR,
 		msg,
 	})
 }
