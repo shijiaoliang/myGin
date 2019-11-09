@@ -1,5 +1,6 @@
 vendor/*
 !vendor/vendor.json
+runtime/*
 coverage.out
 count.out
 test

@@ -2,11 +2,11 @@
 	"model": "debug",
 	"address": ":6080",
 	"mysql": {
-		"host": "192.168.8.100",
+		"host": "127.0.0.1",
 		"port": "3306",
 		"user": "root",
 		"password": "123456",
-		"db": "ceping",
+		"db": "myGin",
 		"charset": "utf8",
 		"max_idle_conns": 10,
 		"max_open_conns": 0
