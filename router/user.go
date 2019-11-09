@@ -23,8 +23,17 @@ import (
 func InitUserRouter(r *gin.Engine) {
 	userRouter := r.Group("/user")
 
+	//[/user/list]
+	userRouter.POST("list", func(c *gin.Context) {
+		var users []user.User
+
+		db.Mysql.Find(&users)
+
+		util.ResSuccess(c, users, "")
+	})
+
 	//[/user/add]
-	userRouter.Any("add", func(c *gin.Context) {
+	userRouter.POST("add", func(c *gin.Context) {
 		var u user.User
 
 		if err := c.ShouldBindJSON(&u); err != nil {
