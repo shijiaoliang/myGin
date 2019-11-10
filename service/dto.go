@@ -63,8 +63,8 @@ func (d *BaseDto) BaseQuery() *gorm.DB {
 }
 
 //BasePagination
-func (d *BaseDto) BasePagination(query *gorm.DB, totalCount int64) *util.Pagination {
-	pagination := &util.Pagination{}
+func (d *BaseDto) BasePagination(query *gorm.DB, totalCount int64) util.Pagination {
+	pagination := util.Pagination{}
 
 	if d.DoPage {
 		page := d.Page
@@ -77,7 +77,7 @@ func (d *BaseDto) BasePagination(query *gorm.DB, totalCount int64) *util.Paginat
 			perPage = 1
 		}
 
-		pagination = &util.Pagination{
+		pagination = util.Pagination{
 			TotalCount: totalCount,
 			Page:       page,
 			PerPage:    perPage,
@@ -86,5 +86,3 @@ func (d *BaseDto) BasePagination(query *gorm.DB, totalCount int64) *util.Paginat
 
 	return pagination
 }
-
-
