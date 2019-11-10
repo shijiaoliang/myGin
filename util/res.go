@@ -33,7 +33,7 @@ type Res struct {
 	Msg  string      `json:"msg"`
 }
 
-func ResSuccessList(c *gin.Context, dataList interface{}, pagination Pagination, msg string) {
+func ResSuccessList(c *gin.Context, dataList interface{}, pagination *Pagination, msg string) {
 	if msg == "" {
 		msg = constSuccessMsg
 	}

@@ -13,6 +13,6 @@ package util
 //分页
 type Pagination struct {
 	TotalCount int64 `json:"total_count"`
-	Page       int   `json:"page"`
-	PerPage    int   `json:"per_page"`
+	Page       int64 `json:"page"`
+	PerPage    int64 `json:"per_page"`
 }

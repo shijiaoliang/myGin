@@ -25,7 +25,7 @@ func InitUserRouter(r *gin.Engine) {
 
 	//[/user/list]
 	userRouter.POST("list", func(c *gin.Context) {
-		var dto user.User
+		var dto user.Dto
 
 		if err := c.ShouldBindJSON(&dto); err != nil {
 			err = errors.WithStack(service.ErrParamError)
@@ -34,27 +34,35 @@ func InitUserRouter(r *gin.Engine) {
 			return
 		}
 
-		query := db.Mysql.Where(&dto)
+		query := dto.BaseQuery()
+		if dto.Name != "" {
+			query = query.Where("name = ?", dto.Name)
+		}
+		if dto.Age > 0 {
+			query = query.Where("age = ?", dto.Age)
+		}
 
-		//if dto.StartCreatedAt.Second() > 0 {
-		//	query = query.Where("created_at >= ?", dto.StartCreatedAt)
-		//}
-		//if dto.EndCreatedAt.Second() > 0 {
-		//	query = query.Where("created_at <= ?", dto.EndCreatedAt)
-		//}
-		//if dto.StartUpdatedAt.Second() > 0 {
-		//	query = query.Where("updated_at >= ?", dto.StartUpdatedAt)
-		//}
-		//if dto.StartUpdatedAt.Second() > 0 {
-		//	query = query.Where("updated_at <= ?", dto.StartUpdatedAt)
-		//}
-
+		//users
 		var users []user.User
+
+		//分页
+		pagination := &util.Pagination{}
 		var totalCount int64
-		query.Find(&users).Count(&totalCount)
 
-		pagination := util.Pagination{TotalCount:totalCount}
+		if dto.DoPage {
+			query.Table("user").Count(&totalCount)
+			pagination = dto.BasePagination(query, totalCount)
 
+			query = query.Limit(pagination.PerPage)
+			query = query.Offset(pagination.Page -1)
+
+			query.Find(&users)
+		} else {
+			query.Find(&users).Count(&totalCount)
+		}
+
+
+		//res
 		util.ResSuccessList(c, users, pagination, "")
 	})
 
