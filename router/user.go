@@ -38,4 +38,27 @@ func InitUserRouter(r *gin.Engine) {
 		//res
 		util.ResSuccessList(c, dataList, pagination, "")
 	})
+
+	//[/user/info]
+	userRouter.POST("info", func(c *gin.Context) {
+		var dto user.Dto
+
+		if err := c.ShouldBindJSON(&dto); err != nil {
+			err = errors.WithStack(service.ErrParamError)
+			util.CheckErr(err, c)
+
+			return
+		}
+
+		id := dto.ID
+		info, err := user.Service.Info(id)
+		if err != nil {
+			util.CheckErr(err, c)
+
+			return
+		}
+
+		//res
+		util.ResSuccess(c, info, "")
+	})
 }

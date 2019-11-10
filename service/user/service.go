@@ -11,6 +11,9 @@
 package user
 
 import (
+	"github.com/jinzhu/gorm"
+
+	"myGin/db"
 	"myGin/util"
 	"sync"
 )
@@ -45,6 +48,17 @@ func (s *userService) List(dto *Dto) (ret []*User, pagination util.Pagination) {
 	}
 
 	query.Find(&ret)
+
+	return
+}
+
+func (s *userService) Info(id int64) (ret User, err error) {
+	if err := db.Mysql.First(&ret, id).Error; gorm.IsRecordNotFoundError(err) {
+		//log.Logger.Error("user info failed: " + err.Error())
+
+		err = ErrUserNotExist
+		return ret, err
+	}
 
 	return
 }
