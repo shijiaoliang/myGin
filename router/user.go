@@ -35,6 +35,7 @@ func InitUserRouter(r *gin.Engine) {
 		}
 
 		query := dto.BaseQuery()
+		query = query.Table("user")
 		if dto.Name != "" {
 			query = query.Where("name = ?", dto.Name)
 		}
@@ -48,13 +49,12 @@ func InitUserRouter(r *gin.Engine) {
 		//分页
 		pagination := &util.Pagination{}
 		var totalCount int64
-
 		if dto.DoPage {
-			query.Table("user").Count(&totalCount)
+			query.Count(&totalCount)
 			pagination = dto.BasePagination(query, totalCount)
 
-			query = query.Limit(pagination.PerPage)
 			query = query.Offset(pagination.Page -1)
+			query = query.Limit(pagination.PerPage)
 
 			query.Find(&users)
 		} else {
